@@ -1,6 +1,7 @@
 from django.db import models
 import json
 
+
 class Mineral(models.Model):
     name = models.CharField(max_length=100, unique=True)
     image_filename = models.CharField(max_length=255)
