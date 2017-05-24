@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="grid-100 mineral__container">
-<h1 class="mineral__name">{{mineral.name}}</h1>
+<h1 class="mineral__name">{{mineral.name|title}}</h1>
   <div class="mineral__image-bg">
     <img class="mineral__image" src="{% static 'img' %}/{{mineral.name}}.jpg" alt="{{ mineral.name|title }}">
         <p class="mineral__caption">{{mineral.image_caption}}</p>
