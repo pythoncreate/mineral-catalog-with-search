@@ -25,18 +25,29 @@
       </a>
       <p class="logo__text text-centered">They're not rocks!</p>
     </div>
-    <div class="grid-100">
-      <h2>Search Rock By Letter:</h2>
-      {% for letter in "abcdefghijklmnopqrstuvwxyz" %}
-      {% if letter == active_letter %}
-      <strong><a href="{% url 'minerals:letter' letter=letter %}">{{ letter }}</a></strong>
-      {% else %}
-        <a href="{% url 'minerals:letter' letter=letter %}">{{ letter }}</a>
-      {% endif %}
-      {% endfor %}
-      <br>
-      <br>
-    </div>
+    <nav class="top-bar" role="navigation">
+       <section class="top-bar-left">
+          <form action="{% url 'minerals:search' %}" method="GET">
+            <input type="search" name="q">
+            <button type="button" class="secondary small button">Search</button>
+                </form>
+         {{term}}
+       </section>
+<div>
+  <strong>{{term}}</strong>
+</div>
+    <!--<div class="grid-100">-->
+      <!--<h2>Search Rock By Letter:</h2>-->
+      <!--{% for letter in "abcdefghijklmnopqrstuvwxyz" %}-->
+        <!--{% if letter == active_letter %}-->
+      <!--<strong><a href="{% url 'minerals:letter' letter=letter %}">{{ letter }}</a></strong>-->
+        <!--{% else %}-->
+        <!--<a href="{% url 'minerals:letter' letter=letter %}">{{ letter }}</a>-->
+        <!--{% endif %}-->
+      <!--{% endfor %}-->
+      <!--<br>-->
+      <!--<br>-->
+    <!--</div>-->
     <div>
    {% block content %}{% endblock %}
     </div>

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from .models import Mineral
+from django.db.models import Q
 
 
 def mineral_list(request):
@@ -16,3 +17,10 @@ def mineral_detail(request, pk):
 def mineral_letter(request, letter):
     minerals = Mineral.objects.filter(name__startswith=letter.lower())
     return render(request, 'minerals/mineral_list.html', {'minerals': minerals, 'active_letter':letter})
+
+
+def search(request):
+    term = request.GET.get("q", "NOTHING")
+    mineral_search = Mineral.objects.filter(name__icontains=term)
+    return render(request, 'minerals/mineral_list.html', {'mineral_search': mineral_search, 'term':term})
+    print(term)

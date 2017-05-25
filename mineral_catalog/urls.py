@@ -16,13 +16,15 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+import debug_toolbar
 
 from . import views
 
 urlpatterns = [
     url(r'^minerals/', include('minerals.urls', namespace='minerals')),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', include('minerals.urls', namespace='minerals')),
+    url(r'^$', include('minerals.urls', namespace='home')),
+    url(r'^__debug__/', include(debug_toolbar.urls)),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
