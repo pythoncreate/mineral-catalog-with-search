@@ -20,7 +20,6 @@ def mineral_letter(request, letter):
 
 
 def search(request):
-    term = request.GET.get("q", "NOTHING")
-    mineral_search = Mineral.objects.filter(name__icontains=term)
-    return render(request, 'minerals/mineral_list.html', {'mineral_search': mineral_search, 'term':term})
-    print(term)
+    term = request.GET.get("q")
+    search = Mineral.objects.filter(name__icontains=term)
+    return render(request, 'minerals/mineral_list.html', {'search': search})
