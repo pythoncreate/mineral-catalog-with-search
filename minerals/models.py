@@ -22,6 +22,7 @@ class Mineral(models.Model):
     refractive_index = models.CharField(max_length=755)
     crystal_habit = models.CharField(max_length=255)
     specific_gravity = models.CharField(max_length=255)
+    group = models.CharField(max_length=255)
 
     class Meta:
         ordering = ['name',]
@@ -53,5 +54,6 @@ class Mineral(models.Model):
                     optical_properties=mineral.get('optical properties', ''),
                     refractive_index=mineral.get('refractive index', ''),
                     crystal_habit=mineral.get('crystal habit', ''),
-                    specific_gravity=mineral.get('specific gravity', '')
+                    specific_gravity=mineral.get('specific gravity', ''),
+                    group = mineral.get('group', ''),
                 ).save()

@@ -1,6 +1,6 @@
 {% load static from staticfiles %}
+{% load mineral_extras %}
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -33,20 +33,27 @@
                 </form>
        </section>
     </nav>
-<div>'
+
+<div>
 </div>
-    <!--<div class="grid-100">-->
-      <!--<h2>Search Rock By Letter:</h2>-->
-      <!--{% for letter in "abcdefghijklmnopqrstuvwxyz" %}-->
-        <!--{% if letter == active_letter %}-->
-      <!--<strong><a href="{% url 'minerals:letter' letter=letter %}">{{ letter }}</a></strong>-->
-        <!--{% else %}-->
-        <!--<a href="{% url 'minerals:letter' letter=letter %}">{{ letter }}</a>-->
-        <!--{% endif %}-->
-      <!--{% endfor %}-->
-      <!--<br>-->
-      <!--<br>-->
-    <!--</div>-->
+    <div class="grid-100">
+      <h2>Search Rock By Letter:</h2>
+      {% for letter in "abcdefghijklmnopqrstuvwxyz" %}
+        {% if letter == active_letter %}
+      <strong><a href="{% url 'minerals:letter' letter=letter %}">{{ letter }}</a></strong>
+        {% else %}
+        <a href="{% url 'minerals:letter' letter=letter %}">{{ letter }}</a>
+        {% endif %}
+      {% endfor %}
+      <br>
+      <br>
+    </div>
+    <div class="grid-100">
+      <h2>Search Rock By Category:</h2>
+      {% nav_minerals_list %}
+      <br>
+      <br>
+    </div>
     <div>
    {% block content %}{% endblock %}
     </div>
